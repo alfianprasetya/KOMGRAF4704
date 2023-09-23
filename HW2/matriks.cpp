@@ -3,7 +3,7 @@
 using namespace std;
 
 int matriks1[10][10], matriks2[10][10], hasil[10][10];
-int i, j, k, m, n, p, q, jumlah = 0, pilih;
+int i, j, k, m, n, p, q, x, jumlah = 0, pilih;
 char ulang = 'y';
 
 void tambah(int m, int n)
@@ -56,6 +56,18 @@ void kali(int m, int n, int p, int q)
     }
 }
 
+void skalar(int m, int n, int x)
+{
+    cout << "hasil perkalian skalar matrix: \n";
+    for(i = 0; i < m; i++){
+        for(j = 0; j < n; j++){
+            hasil[i][j] = matriks1[i][j] * x;
+            cout << hasil[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
 int main() {
     cout << "KALKULATOR MATRIKS by Alfian" << endl;
     
@@ -64,20 +76,35 @@ int main() {
     cout << "1. Penambahan" << endl;
     cout << "2. Pengurangan" << endl;
     cout << "3. Perkalian" << endl;
-    cout << "Pilihanmu (1-3) = ";
+    cout << "4. Perkalian Skalar" << endl;
+    cout << "Pilihanmu (1-4) = ";
     cin >> pilih;
 
-    if(pilih <= 3) {
+    if(pilih <= 4) {
         cout << "Masukkan jumlah baris matriks pertama: ";
         cin >> m;
         cout << "Masukkan jumlah kolom matriks pertama: ";
         cin >> n;
 
+        if(pilih == 4) {
+            cout <<"Masukkan bilangan pengali : ";
+            cin >> x;
+
+            cout << "Masukkan elemen matriks pertama: \n";
+            for(i = 0; i < m; i++){
+                for(j = 0; j < n; j++){
+                    cin >> matriks1[i][j];
+                }   
+            }
+            goto masuk;
+        }
+
         cout << "Masukkan jumlah baris matriks kedua: ";
         cin >> p;
         cout << "Masukkan jumlah kolom matriks kedua: ";
         cin >> q;
-
+        
+        
         cout << "Masukkan elemen matriks pertama: \n";
         for(i = 0; i < m; i++){
             for(j = 0; j < n; j++){
@@ -92,6 +119,7 @@ int main() {
             }
         }
 
+        masuk:
         switch (pilih)
         {
             case 1 : tambah(m, n);
@@ -102,7 +130,8 @@ int main() {
 
             case 3 : kali(m, n, p, q);
                 break;
-            
+            case 4 : skalar(m, n, x);
+                break;
         }
 
         cout << "Ingin mencoba lagi ? (y/n) : ";
