@@ -69,7 +69,9 @@ void skalar(int m, int n, int x)
 }
 
 int main() {
+    cout << "=============================" << endl;
     cout << "KALKULATOR MATRIKS by Alfian" << endl;
+    cout << "=============================" << endl;
     
     menu:
     cout << "Silahkan dipilih : " << endl;
